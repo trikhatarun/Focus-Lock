@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">RichMornings</string>
-    <string name="sun_description">Image of sun indicating the wakeup time below it</string>
-    <string name="moon_description">Image of moon indicating the sleep time below it</string>
+    <string name="sun_description">Image indicating the wakeup time</string>
+    <string name="moon_description">Image indicating the sleep time</string>
     <string name="item1_title">Home</string>
     <string name="item2_title">Motivation</string>
     <string name="item3_title">Applications</string>

@@ -1,23 +1,21 @@
 package com.example.trikh.focuson;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.bottom_navigation)
-    AHBottomNavigation bottomNavigation;
-    Fragment fragment;
+    @BindView(R.id.bottomBar)
+    BottomBar bottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,37 +24,18 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.item1_title, R.drawable.ic_action_home, R.color.colorPrimary);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.item2_title, R.drawable.ic_action_video, R.color.colorPrimary);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.item3_title, R.drawable.ic_apps, R.color.colorPrimary);
-
-        bottomNavigation.addItem(item1);
-        bottomNavigation.addItem(item3);
-        bottomNavigation.addItem(item2);
-
-        bottomNavigation.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-
-        bottomNavigation.setBehaviorTranslationEnabled(false);
-
-        bottomNavigation.setAccentColor(ContextCompat.getColor(this, R.color.colorAccent));
-        bottomNavigation.setInactiveColor(Color.parseColor("#FFD0D4D3"));
-
-        bottomNavigation.setForceTint(true);
-
-        bottomNavigation.setTranslucentNavigationEnabled(true);
-
-        bottomNavigation.setCurrentItem(0, false);
-
-        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
-                Fragment fragment = new HomeFragment();
-                if (fragment != null) {
+            public void onTabSelected(@IdRes int tabId) {
+                Fragment fragment = null;
+                if (tabId == R.id.home) {
+                    fragment = new HomeFragment();
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.add(R.id.frame, fragment);
+                    ft.replace(R.id.contentContainer, fragment);
                     ft.commit();
+                    // The tab with id R.id.tab_favorites was selected,
+                    // change your content accordingly.
                 }
-                return true;
             }
         });
 
