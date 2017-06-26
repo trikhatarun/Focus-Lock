@@ -14,11 +14,9 @@
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        app:bb_activeTabColor="@color/colorAccent"
-        app:bb_behavior="underNavbar|shifting"
-        app:bb_inActiveTabColor="#F0F7EE"
+        app:bb_activeTabColor="@color/colorPrimaryDark"
         app:bb_showShadow="true"
         app:bb_tabXmlResource="@xml/bottombar_tabs"
         app:bb_titleTypeFace="fonts/Rajdhani-Light.ttf" />

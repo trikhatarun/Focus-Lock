@@ -5,4 +5,6 @@
     <string name="item1_title">Home</string>
     <string name="item2_title">Motivation</string>
     <string name="item3_title">Applications</string>
+    <string name="wake_up_time_key">wakeUpTime</string>
+    <string name="sleep_time_key">sleepTime</string>
 </resources>
