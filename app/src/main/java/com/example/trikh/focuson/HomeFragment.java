@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootview = inflater.inflate(R.layout.activity_main, container, false);
+        View rootview = inflater.inflate(R.layout.home, container, false);
 
         ButterKnife.bind(this, rootview);
 

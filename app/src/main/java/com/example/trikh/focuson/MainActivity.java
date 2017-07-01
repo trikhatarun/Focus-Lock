@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottomBar)
     BottomBar bottomBar;
+    private int oldTabId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +28,25 @@ public class MainActivity extends AppCompatActivity {
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                Fragment fragment;
+                Fragment fragment = null;
                 if (tabId == R.id.home) {
                     fragment = new HomeFragment();
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.contentContainer, fragment);
-                    ft.commit();
-                    // The tab with id R.id.tab_favorites was selected,
-                    // change your content accordingly.
+                } else if (tabId == R.id.applications) {
+                    fragment = new ApplicationListFragment();
                 }
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+                if (oldTabId < tabId) {
+                    ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                    oldTabId = tabId;
+                } else {
+                    ft.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
+                    oldTabId = tabId;
+                }
+
+                ft.replace(R.id.contentContainer, fragment)
+                        .addToBackStack(null);
+                ft.commit();
             }
         });
 
