@@ -7,6 +7,6 @@
     <string name="item3_title">Applications</string>
     <string name="wake_up_time_key">wakeUpTime</string>
     <string name="sleep_time_key">sleepTime</string>
-    <string name="app_icon_description">Image icon for corresponding icon</string>
-    <string name="block_button_description">Button to block and unblock an app</string>
+    <string name="app_icon_description">Image for corresponding app icon</string>
+    <string name="block_app_set_key">blockedAppSet</string>
 </resources>

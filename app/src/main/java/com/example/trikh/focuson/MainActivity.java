@@ -31,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 if (tabId == R.id.home) {
                     fragment = new HomeFragment();
+                    setTitle(getString(R.string.item1_title));
                 } else if (tabId == R.id.applications) {
                     fragment = new ApplicationListFragment();
+                    setTitle(getString(R.string.item3_title));
                 }
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
