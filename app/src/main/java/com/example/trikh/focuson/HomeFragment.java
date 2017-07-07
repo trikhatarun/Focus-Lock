@@ -1,6 +1,10 @@
 package com.example.trikh.focuson;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,6 +20,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -118,5 +123,23 @@ public class HomeFragment extends Fragment implements SharedPreferences.OnShared
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         loadPreferences();
+    }
+
+    private void alarm() {
+        //Code to initiate alarm manager
+        AlarmManager alarmManagerInstance = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+
+        PendingIntent intent = PendingIntent.getService(getContext(), 0, new Intent(getContext(), AlarmReceiver.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String[] time = preferences.getString(getString(R.string.wake_up_time_key), "05:00").split(":");
+        hour = Integer.parseInt(time[0]);
+        minute = Integer.parseInt(time[1]);
+
+        Calendar wakeUpTimeCalendar = Calendar.getInstance();
+        wakeUpTimeCalendar.set(Calendar.HOUR_OF_DAY, hour);
+        wakeUpTimeCalendar.set(Calendar.MINUTE, minute);
+
+        alarmManagerInstance.setInexactRepeating(AlarmManager.RTC, wakeUpTimeCalendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, intent);
     }
 }
