@@ -1,16 +1,16 @@
-package com.example.trikh.focuson;
+package com.example.trikh.focuson.alarmPackage;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
 /**
- * Created by trikh on 07-07-2017.
+ * Created by trikh on 08-07-2017.
  */
 
-public class AlarmReceiver extends BroadcastReceiver {
+public class RebootedDevice extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-
+        //Working
     }
 }

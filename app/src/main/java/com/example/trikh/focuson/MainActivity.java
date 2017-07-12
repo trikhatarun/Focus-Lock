@@ -1,11 +1,15 @@
 package com.example.trikh.focuson;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.example.trikh.focuson.alarmPackage.AlarmHelper;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -51,5 +55,15 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
             }
         });
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean isFirstInstallation = preferences.getBoolean(getString(R.string.first_installation_key), true);
+        if (isFirstInstallation) {
+            Log.v("Alarm setting check: ", "first time checked");
+            AlarmHelper ah = new AlarmHelper(this);
+            ah.setAlarm(PreferenceHelper.getMorningTimeString(this), Integer.parseInt(getString(R.string.request_code_for_morning)));
+            ah.setAlarm(PreferenceHelper.getSleepTimeString(this), Integer.parseInt(getString(R.string.request_code_for_night)));
+            preferences.edit().putBoolean(getString(R.string.first_installation_key), false).apply();
+        }
     }
 }

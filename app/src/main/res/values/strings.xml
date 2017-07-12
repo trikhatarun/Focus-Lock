@@ -9,4 +9,7 @@
     <string name="sleep_time_key">sleepTime</string>
     <string name="app_icon_description">Image for corresponding app icon</string>
     <string name="block_app_set_key">blockedAppSet</string>
+    <string name="first_installation_key">first_installation</string>
+    <string name="request_code_for_morning">110</string>
+    <string name="request_code_for_night">111</string>
 </resources>
