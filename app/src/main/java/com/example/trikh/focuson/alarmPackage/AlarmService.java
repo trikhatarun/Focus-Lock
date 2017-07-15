@@ -1,57 +1,81 @@
 package com.example.trikh.focuson.alarmPackage;
 
-import android.app.IntentService;
+import android.app.ActivityManager;
+import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
+import android.os.IBinder;
+import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.example.trikh.focuson.R;
 
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by trikh on 07-07-2017.
  */
 
-public class AlarmService extends IntentService {
+public class AlarmService extends Service {
 
-    private static final String TAG = "AlarmService";
+    private int code;
+    private Set<String> blockedAppSet;
 
-    public AlarmService() {
-        super(TAG);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        long durationMillis;
+        if (code == Integer.valueOf(getString(R.string.request_code_for_morning))) {
+            durationMillis = TimeUnit.MINUTES.toMillis(180);
+        } else
+            durationMillis = TimeUnit.MINUTES.toMillis(60);
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                refreshBlockedAppSet();
+                ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+                List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
+
+                for (int i = 0; i < runningAppProcessInfo.size(); i++) {
+                    Log.i("Location: ", "AppLaumched " + runningAppProcessInfo.get(i).processName);
+                    if (blockedAppSet.contains(runningAppProcessInfo.get(i).processName)) {
+                        am.killBackgroundProcesses(runningAppProcessInfo.get(i).processName);
+                        Log.i("Location: ", "Killed app process: " + runningAppProcessInfo.get(i).processName);
+                    }
+                }
+            }
+
+            public void onFinish() {
+                stopSelf();
+            }
+        }.start();
+    }
+
+    private void refreshBlockedAppSet() {
+        blockedAppSet = PreferenceManager.getDefaultSharedPreferences(this).getStringSet(getString(R.string.block_app_set_key), new HashSet<String>());
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        int code = intent.getIntExtra("code", 0);
+    public void onDestroy() {
+        Log.i("Service: ", "Ended and destroyed");
+        super.onDestroy();
+    }
 
-        Log.v("service started, Code: ", String.valueOf(code));
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        code = intent.getIntExtra("code", 0);
+        Log.i("Service: ", "started by onStartCommand with code: " + code);
+        return super.onStartCommand(intent, flags, startId);
+    }
 
-        final long currentTime, requiredTime;
-
-        Timer timer = new Timer();
-
-        currentTime = System.currentTimeMillis();
-
-        Calendar requiredTimeCalendar = Calendar.getInstance();
-        requiredTimeCalendar.setTimeInMillis(currentTime);
-        if (code == Integer.parseInt(getString(R.string.request_code_for_morning))) {
-            requiredTimeCalendar.add(Calendar.HOUR_OF_DAY, 1);
-        } else if (code == Integer.parseInt(getString(R.string.request_code_for_night))) {
-            requiredTimeCalendar.add(Calendar.HOUR_OF_DAY, 1);
-        }
-        requiredTime = requiredTimeCalendar.getTimeInMillis();
-
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (currentTime < requiredTime) {
-                    Log.v("time log every second: ", String.valueOf(currentTime));
-                }
-            }
-        }, 0, 1000);
-
-        Log.v("Service status: ", "stopped");
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 }
