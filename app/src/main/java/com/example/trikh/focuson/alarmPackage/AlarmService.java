@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.example.trikh.focuson.R;
+import com.jaredrummler.android.processes.AndroidProcesses;
+import com.jaredrummler.android.processes.models.AndroidAppProcess;
 
 import java.util.HashSet;
 import java.util.List;
@@ -39,13 +41,13 @@ public class AlarmService extends Service {
             public void onTick(long millisUntilFinished) {
                 refreshBlockedAppSet();
                 ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-                List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
+                List<AndroidAppProcess> runningAppProcessInfo = AndroidProcesses.getRunningAppProcesses();
 
                 for (int i = 0; i < runningAppProcessInfo.size(); i++) {
-                    Log.i("Location: ", "AppLaumched " + runningAppProcessInfo.get(i).processName);
-                    if (blockedAppSet.contains(runningAppProcessInfo.get(i).processName)) {
-                        am.killBackgroundProcesses(runningAppProcessInfo.get(i).processName);
-                        Log.i("Location: ", "Killed app process: " + runningAppProcessInfo.get(i).processName);
+                    Log.i("Location: ", "AppLaunched " + runningAppProcessInfo.get(i).getPackageName());
+                    if (blockedAppSet.contains(runningAppProcessInfo.get(i).getPackageName())) {
+                        am.killBackgroundProcesses(runningAppProcessInfo.get(i).getPackageName());
+                        Log.i("Location: ", "Killed app process: " + runningAppProcessInfo.get(i).getPackageName());
                     }
                 }
             }
