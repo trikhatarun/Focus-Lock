@@ -1,4 +1,4 @@
-package com.example.trikh.focuson;
+package com.android.trikh.focusLock;
 
 import org.junit.Test;
 

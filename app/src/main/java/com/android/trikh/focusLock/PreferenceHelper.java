@@ -1,10 +1,11 @@
-package com.example.trikh.focuson;
+package com.android.trikh.focusLock;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
-import com.example.trikh.focuson.alarmPackage.AlarmHelper;
+import com.android.trikh.focusLock.alarmPackage.AlarmHelper;
 
 /**
  * Created by trikh on 09-07-2017.
@@ -23,6 +24,7 @@ class PreferenceHelper {
     }
 
     static void setTimePreference(Context context, String time, int requestCode) {
+        Log.v("Context: ", context.toString());
         if (String.valueOf(requestCode).equals(context.getString(R.string.request_code_for_morning))) {
             if (!getMorningTimeString(context).equals(time)) {
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
@@ -41,5 +43,6 @@ class PreferenceHelper {
             }
         }
     }
+
 
 }

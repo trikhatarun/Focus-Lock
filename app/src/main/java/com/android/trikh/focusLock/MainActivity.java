@@ -1,5 +1,6 @@
-package com.example.trikh.focuson;
+package com.android.trikh.focusLock;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -9,7 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.example.trikh.focuson.alarmPackage.AlarmHelper;
+import com.android.trikh.focusLock.alarmPackage.AlarmHelper;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -29,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        startService(new Intent(this, BackgroundService.class));
+
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 Fragment fragment = null;
                 if (tabId == R.id.home) {
                     fragment = new HomeFragment();
@@ -40,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new ApplicationListFragment();
                     setTitle(getString(R.string.item3_title));
                 }
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
+                if (oldTabId != -1) {
+                    Log.d("First Tab: ", " This is first time tab");
+                    ft.addToBackStack(null);
+                }
                 if (oldTabId < tabId) {
                     ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
                     oldTabId = tabId;
@@ -50,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     oldTabId = tabId;
                 }
 
-                ft.replace(R.id.contentContainer, fragment)
-                        .addToBackStack(null);
+                ft.replace(R.id.contentContainer, fragment);
                 ft.commit();
             }
         });
@@ -66,4 +71,5 @@ public class MainActivity extends AppCompatActivity {
             preferences.edit().putBoolean(getString(R.string.first_installation_key), false).apply();
         }
     }
+
 }

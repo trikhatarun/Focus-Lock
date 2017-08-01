@@ -1,4 +1,4 @@
-package com.example.trikh.focuson.data;
+package com.android.trikh.focusLock.data;
 
 import android.graphics.drawable.Drawable;
 

@@ -22,12 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
         android:padding="8dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         tools:text="Facebook" />
 
-    <CheckBox
-        android:id="@+id/blocked_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/blocked_imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/blocked_icon_description" />
 
 </LinearLayout>

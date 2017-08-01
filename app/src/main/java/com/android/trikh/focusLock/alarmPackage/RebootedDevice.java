@@ -1,4 +1,4 @@
-package com.example.trikh.focuson.alarmPackage;
+package com.android.trikh.focusLock.alarmPackage;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

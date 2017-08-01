@@ -1,4 +1,4 @@
-package com.example.trikh.focuson;
+package com.android.trikh.focusLock;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.example.trikh.focuson;
+package com.android.trikh.focusLock;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -11,12 +11,13 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.trikh.focuson.data.AppInfo;
-import com.example.trikh.focuson.recyclerView.AppListAdapter;
+import com.android.trikh.focusLock.data.AppInfo;
+import com.android.trikh.focusLock.recyclerView.AppListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -50,6 +51,8 @@ public class ApplicationListFragment extends Fragment implements AppListAdapter.
 
         blockAppsSet = preferences.getStringSet(getString(R.string.block_app_set_key), new HashSet<String>());
 
+        Log.d("Blocked App Set 1: ", blockAppsSet.toString());
+
         appInfoList = new ArrayList<>();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -77,7 +80,8 @@ public class ApplicationListFragment extends Fragment implements AppListAdapter.
             app.setAppBlockedstatus(true);
         }
         editor.putStringSet(getString(R.string.block_app_set_key), blockAppsSet);
-        editor.commit();
+        editor.apply();
+        Log.d("Blocked App Set: ", blockAppsSet.toString());
         adapter.notifyDataSetChanged();
     }
 

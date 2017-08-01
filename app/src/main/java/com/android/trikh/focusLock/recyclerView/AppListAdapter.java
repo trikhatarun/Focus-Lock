@@ -1,16 +1,15 @@
-package com.example.trikh.focuson.recyclerView;
+package com.android.trikh.focusLock.recyclerView;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.trikh.focuson.R;
-import com.example.trikh.focuson.data.AppInfo;
+import com.android.trikh.focusLock.R;
+import com.android.trikh.focusLock.data.AppInfo;
 
 import java.util.ArrayList;
 
@@ -44,7 +43,12 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppViewH
         AppInfo currentApp = dataInstance.get(position);
         holder.appName.setText(currentApp.getAppName());
         holder.appIcon.setImageDrawable(currentApp.getAppIcon());
-        holder.blockCheckBox.setChecked(currentApp.getAppBlocked());
+        if (currentApp.getAppBlocked()) {
+            holder.blockCheckBox.setBackgroundResource(R.drawable.ic_block_red);
+        } else {
+            holder.blockCheckBox.setBackgroundResource(R.drawable.ic_block_grey);
+        }
+
 
     }
 
@@ -70,8 +74,8 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppViewH
         ImageView appIcon;
         @BindView(R.id.app_name)
         TextView appName;
-        @BindView(R.id.blocked_checkbox)
-        CheckBox blockCheckBox;
+        @BindView(R.id.blocked_imageView)
+        ImageView blockCheckBox;
 
         AppViewHolder(View itemView) {
             super(itemView);
