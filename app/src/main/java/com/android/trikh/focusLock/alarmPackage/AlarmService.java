@@ -32,6 +32,7 @@ public class AlarmService extends Service {
 
     @Override
     public void onCreate() {
+        Log.i("Service123: ", "Started destroyed");
         super.onCreate();
         context = this;
     }

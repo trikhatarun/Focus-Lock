@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.android.trikh.focusLock.R;
 
@@ -22,6 +23,9 @@ public class AlarmHelper {
     }
 
     public void setAlarm(String timeString, int code) {
+
+        Log.v("myTag: ", "alarm set in alarmhelper");
+
         AlarmManager alarmManagerInstance = (AlarmManager) contextInstance.getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(contextInstance, AlarmService.class);
