@@ -1,14 +1,15 @@
 package com.android.trikh.focusLock;
 
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.android.trikh.focusLock.alarmPackage.AlarmService;
+import com.jaredrummler.android.processes.AndroidProcesses;
+import com.jaredrummler.android.processes.models.AndroidAppProcess;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,15 +22,18 @@ public class BackgroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.d("myTag1: ", "Service started");
-
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                //Intent alarm = new Intent(MainActivity.class,AlarmService.class);
-                boolean alarmUp = (PendingIntent.getService(getApplicationContext(), 110,
-                        new Intent(AlarmService.class.toString()),
-                        PendingIntent.FLAG_NO_CREATE) != null);
+                boolean alarmUp = false;
+                List<AndroidAppProcess> runningAppProcessInfo = AndroidProcesses.getRunningAppProcesses();
+
+                for (int i = 0; i < runningAppProcessInfo.size(); i++) {
+                    String currentAppName = runningAppProcessInfo.get(i).getPackageName();
+                    if (currentAppName.equals(getApplicationContext().getPackageName())) {
+                        alarmUp = true;
+                    }
+                }
 
                 if (alarmUp) {
                     Log.d("myTag", "Alarm is already active");
@@ -39,8 +43,14 @@ public class BackgroundService extends Service {
                 Intent service = new Intent(BackgroundService.this, BackgroundService.class);
                 startService(service);
             }
-        }, 10000);
+        }, 1000);
         return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        sendBroadcast(new Intent("RestartAppPlease"));
     }
 
     @Nullable

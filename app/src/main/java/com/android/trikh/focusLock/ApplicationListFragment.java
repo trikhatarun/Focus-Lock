@@ -20,6 +20,8 @@ import com.android.trikh.focusLock.data.AppInfo;
 import com.android.trikh.focusLock.recyclerView.AppListAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -110,6 +112,11 @@ public class ApplicationListFragment extends Fragment implements AppListAdapter.
                     }
                 }
             }
+            Collections.sort(appInfoList, new Comparator<AppInfo>() {
+                public int compare(AppInfo obj1, AppInfo obj2) {
+                    return obj1.getAppName().compareToIgnoreCase(obj2.getAppName()); // To compare string values
+                }
+            });
 
             return null;
         }

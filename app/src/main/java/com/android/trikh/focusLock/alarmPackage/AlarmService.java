@@ -29,7 +29,6 @@ public class AlarmService extends Service {
 
     private Set<String> blockedAppSet;
     private Context context;
-    private int code;
 
     @Override
     public void onCreate() {
@@ -50,7 +49,7 @@ public class AlarmService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        code = intent.getIntExtra("code", 0);
+        int code = intent.getIntExtra("code", 0);
         long durationMillis;
         if (code == Integer.valueOf(getString(R.string.request_code_for_morning))) {
             durationMillis = TimeUnit.MINUTES.toMillis(180);

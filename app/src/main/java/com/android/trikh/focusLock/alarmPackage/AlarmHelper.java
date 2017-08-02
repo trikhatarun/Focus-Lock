@@ -27,7 +27,7 @@ public class AlarmHelper {
         Intent intent = new Intent(contextInstance, AlarmService.class);
         intent.putExtra("code", code);
 
-        PendingIntent pendingIntent = PendingIntent.getService(contextInstance, code, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(contextInstance, code, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         String[] time = timeString.split(":");
         int hour = Integer.parseInt(time[0]);
