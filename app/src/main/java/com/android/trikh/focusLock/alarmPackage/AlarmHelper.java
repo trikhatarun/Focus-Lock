@@ -24,14 +24,14 @@ public class AlarmHelper {
 
     public void setAlarm(String timeString, int code) {
 
-        Log.v("myTag: ", "alarm set in alarmhelper");
+        Log.v("myTag: ", contextInstance.toString());
 
         AlarmManager alarmManagerInstance = (AlarmManager) contextInstance.getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(contextInstance, AlarmService.class);
         intent.putExtra("code", code);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(contextInstance, code, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getService(contextInstance, code, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         String[] time = timeString.split(":");
         int hour = Integer.parseInt(time[0]);

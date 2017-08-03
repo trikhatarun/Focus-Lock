@@ -43,7 +43,7 @@ public class BackgroundService extends Service {
             @Override
             public void run() {
 
-                boolean alarmUp = (PendingIntent.getService(getApplicationContext(), 110,
+                boolean alarmUp = (PendingIntent.getService(BackgroundService.this, 110,
                         new Intent(BackgroundService.this, AlarmService.class),
                         PendingIntent.FLAG_NO_CREATE) != null);
 
@@ -55,7 +55,7 @@ public class BackgroundService extends Service {
                 }
                 sendBroadcast(new Intent("RestartAppPlease"));
             }
-        }, 3000);
+        }, 90000);
         return START_STICKY;
     }
 

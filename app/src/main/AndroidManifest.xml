@@ -12,9 +12,9 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/focus_block_2_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/focus_block_2_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.android.trikh.focusLock.MainActivity">
@@ -28,8 +28,7 @@
         <activity
             android:name="com.android.trikh.focusLock.BlockedAppActivity"
             android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.Transparent" />
 
         <receiver android:name="com.android.trikh.focusLock.alarmPackage.RebootedDevice">
@@ -41,9 +40,7 @@
         </receiver>
         <service
             android:name="com.android.trikh.focusLock.alarmPackage.AlarmService"
-            android:enabled="true"
-            android:process=":remote"
-            android:stopWithTask="false" />
+            android:enabled="true" />
         <service
             android:name=".BackgroundService"
             android:enabled="true" />

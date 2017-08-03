@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RichMornings</string>
+    <string name="app_name">FocusLock</string>
     <string name="sun_description">Image indicating the wakeup time</string>
     <string name="moon_description">Image indicating the sleep time</string>
     <string name="item1_title">Home</string>
@@ -13,4 +13,5 @@
     <string name="first_installation_key">first_installation</string>
     <string name="request_code_for_morning">110</string>
     <string name="request_code_for_night">111</string>
+    <string name="block_message">Focus human! There are more important targets to hit!!</string>
 </resources>
