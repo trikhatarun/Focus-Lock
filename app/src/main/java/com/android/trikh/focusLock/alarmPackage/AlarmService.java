@@ -1,6 +1,7 @@
 package com.android.trikh.focusLock.alarmPackage;
 
 import android.app.ActivityManager;
+import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +11,9 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.android.trikh.focusLock.BlockedAppActivity;
+import com.android.trikh.focusLock.BackgroundService;
 import com.android.trikh.focusLock.R;
+import com.android.trikh.focusLock.ui.BlockedAppActivity;
 import com.jaredrummler.android.processes.AndroidProcesses;
 import com.jaredrummler.android.processes.models.AndroidAppProcess;
 import com.rvalerio.fgchecker.AppChecker;
@@ -32,9 +34,15 @@ public class AlarmService extends Service {
 
     @Override
     public void onCreate() {
-        Log.i("Service123: ", "Started ");
         super.onCreate();
-        context = this;
+        context = getBaseContext();
+        Notification notification = new Notification.Builder(this)
+                .setContentTitle("Focus Lock")
+                .setContentText("Disturbances have been blocked. Let Focus be locked on right targets!!")
+                .setPriority(Notification.PRIORITY_MIN)
+                .setSmallIcon(R.drawable.focus_block_2_icon)
+                .build();
+        startForeground(1140, notification);
     }
 
     private void refreshBlockedAppSet() {
@@ -43,7 +51,6 @@ public class AlarmService extends Service {
 
     @Override
     public void onDestroy() {
-        Log.i("Service: ", "Ended and destroyed");
         super.onDestroy();
     }
 
@@ -54,8 +61,11 @@ public class AlarmService extends Service {
         long durationMillis;
         if (code == Integer.valueOf(getString(R.string.request_code_for_morning))) {
             durationMillis = TimeUnit.MINUTES.toMillis(180);
-        } else
+        } else if (code == Integer.valueOf(context.getString(R.string.request_code_for_night)))
             durationMillis = TimeUnit.MINUTES.toMillis(60);
+        else {
+            durationMillis = intent.getLongExtra("timeLeft", 0);
+        }
         new CountDownTimer(durationMillis, 1000) {
             public void onTick(long millisUntilFinished) {
                 refreshBlockedAppSet();
@@ -76,19 +86,19 @@ public class AlarmService extends Service {
                             am.killBackgroundProcesses(currentAppName);
                             Intent intent = new Intent();
                             intent.setClass(context, BlockedAppActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                                    Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                                    Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                             startActivity(intent);
                         } else {
                             am.killBackgroundProcesses(currentAppName);
                         }
                     }
-                    /*else if (appChecker.getForegroundApp(context).equals("com.android.trikh.focusLock")){
-                        //Todo: Create new activity
-                    }*/
                 }
             }
             public void onFinish() {
                 stopSelf();
+                startService(new Intent(AlarmService.this, BackgroundService.class));
             }
         }.start();
         return super.onStartCommand(intent, flags, startId);

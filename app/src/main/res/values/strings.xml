@@ -14,4 +14,19 @@
     <string name="request_code_for_morning">110</string>
     <string name="request_code_for_night">111</string>
     <string name="block_message">Focus human! There are more important targets to hit!!</string>
+    <string name="content_of_the_day">Content of the day</string>
+    <string name="youTube_dev_key">AIzaSyBksehp4bPQyoggVdhZD_pJgJF5pa30Xis</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="native_ad_unit_id">ca-app-pub-5373874613722696/9551872183</string>
+    <string name="app_id_admob">ca-app-pub5373874613722696~1123729585</string>
+    <string name="day_installed_key">day_installed</string>
+    <string name="life_days_left_key">days_left</string>
+    <string name="days_left">days left</string>
+    <string name="disclaimer">*based on average life expectancy of %s</string>
+    <string name="country_key">country</string>
+    <string name="facebook_app_id">483876031968278</string>
+    <string name="fb_login_protocol_scheme">fb483876031968278</string>
+    <string name="target_hit_icon">Target hit icon</string>
+    <string name="thumbnail_for_the_video">thumbnail for the video</string>
+    <string name="play_button_icon">play button icon</string>
 </resources>

@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.android.trikh.focusLock.R;
 
@@ -23,8 +22,6 @@ public class AlarmHelper {
     }
 
     public void setAlarm(String timeString, int code) {
-
-        Log.v("myTag: ", contextInstance.toString());
 
         AlarmManager alarmManagerInstance = (AlarmManager) contextInstance.getSystemService(Context.ALARM_SERVICE);
 
@@ -46,6 +43,10 @@ public class AlarmHelper {
             calendarTime.set(Calendar.HOUR_OF_DAY, hour - 1);
         }
 
-        alarmManagerInstance.setRepeating(AlarmManager.RTC, calendarTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        if (calendarTime.before(Calendar.getInstance())) {
+            calendarTime.add(Calendar.DATE, 1);
+        }
+
+        alarmManagerInstance.setExact(AlarmManager.RTC, calendarTime.getTimeInMillis(), pendingIntent);
     }
 }

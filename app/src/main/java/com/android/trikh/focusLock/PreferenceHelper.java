@@ -3,28 +3,28 @@ package com.android.trikh.focusLock;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.android.trikh.focusLock.alarmPackage.AlarmHelper;
+
+import java.util.Calendar;
 
 /**
  * Created by trikh on 09-07-2017.
  */
 
-class PreferenceHelper {
+public class PreferenceHelper {
 
-    static String getMorningTimeString(Context context) {
+    public static String getMorningTimeString(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(context.getString(R.string.wake_up_time_key), "5:00");
     }
 
-    static String getSleepTimeString(Context context) {
+    public static String getSleepTimeString(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(context.getString(R.string.sleep_time_key), "22:00");
     }
 
-    static void setTimePreference(Context context, String time, int requestCode) {
-        Log.v("Context: ", context.toString());
+    public static void setTimePreference(Context context, String time, int requestCode) {
         if (String.valueOf(requestCode).equals(context.getString(R.string.request_code_for_morning))) {
             if (!getMorningTimeString(context).equals(time)) {
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
@@ -36,7 +36,7 @@ class PreferenceHelper {
         } else if (String.valueOf(requestCode).equals(context.getString(R.string.request_code_for_night))) {
             if (!getSleepTimeString(context).equals(time)) {
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-                editor.putString(context.getString(R.string.wake_up_time_key), time);
+                editor.putString(context.getString(R.string.sleep_time_key), time);
                 editor.apply();
                 AlarmHelper ah = new AlarmHelper(context);
                 ah.setAlarm(time, requestCode);
@@ -44,5 +44,37 @@ class PreferenceHelper {
         }
     }
 
+    public static int getFirstDay(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        int days = preferences.getInt(context.getString(R.string.day_installed_key), 0);
+        if (days == 0) {
+            days = firstDay();
+            setFirstDay(context, days);
+        }
+        return days;
+    }
 
+    private static void setFirstDay(Context context, int days) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putInt(context.getString(R.string.day_installed_key), days);
+        editor.apply();
+    }
+
+    private static int firstDay() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.DAY_OF_YEAR);
+    }
+
+    public static int getDaysLeft(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getInt(context.getString(R.string.life_days_left_key), 0);
+    }
+
+    public static String getCountryName(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.country_key), null);
+    }
+
+    public static void reduceDaysLeft(Context context) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(context.getString(R.string.life_days_left_key), getDaysLeft(context) - 1).apply();
+    }
 }

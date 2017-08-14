@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,16 +10,32 @@
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomBar" />
+        android:layout_above="@+id/linearLayout" />
 
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="130dp"
         android:layout_alignParentBottom="true"
-        app:bb_activeTabColor="@color/colorPrimaryDark"
-        app:bb_showShadow="true"
-        app:bb_tabXmlResource="@xml/bottombar_tabs"
-        app:bb_titleTypeFace="fonts/Rajdhani-Light.ttf" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.gms.ads.NativeExpressAdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="320x80"
+            ads:adUnitId="@string/native_ad_unit_id" />
+
+        <com.roughike.bottombar.BottomBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:bb_activeTabColor="@color/colorPrimaryDark"
+            app:bb_showShadow="true"
+            app:bb_tabXmlResource="@xml/bottombar_tabs"
+            app:bb_titleTypeFace="fonts/Rajdhani-Light.ttf" />
+
+    </LinearLayout>
 
 </RelativeLayout>

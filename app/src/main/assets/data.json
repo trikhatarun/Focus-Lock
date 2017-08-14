@@ -1,0 +1,986 @@
+[
+  {
+    "2015": 75.57359,
+    "country": "Aruba"
+  },
+  {
+    "2015": 60.71717,
+    "country": "Afghanistan"
+  },
+  {
+    "2015": 52.6661,
+    "country": "Angola"
+  },
+  {
+    "2015": 78.01446,
+    "country": "Albania"
+  },
+  {
+    "2015": 70.71407,
+    "country": "Arab World"
+  },
+  {
+    "2015": 77.54124,
+    "country": "United Arab Emirates"
+  },
+  {
+    "2015": 76.33422,
+    "country": "Argentina"
+  },
+  {
+    "2015": 74.79712,
+    "country": "Armenia"
+  },
+  {
+    "2015": 76.10022,
+    "country": "Antigua and Barbuda"
+  },
+  {
+    "2015": 82.45122,
+    "country": "Australia"
+  },
+  {
+    "2015": 81.8439,
+    "country": "Austria"
+  },
+  {
+    "2015": 70.84878,
+    "country": "Azerbaijan"
+  },
+  {
+    "2015": 57.10705,
+    "country": "Burundi"
+  },
+  {
+    "2015": 81.2878,
+    "country": "Belgium"
+  },
+  {
+    "2015": 59.72071,
+    "country": "Benin"
+  },
+  {
+    "2015": 58.93129,
+    "country": "Burkina Faso"
+  },
+  {
+    "2015": 72.0012,
+    "country": "Bangladesh"
+  },
+  {
+    "2015": 74.46585,
+    "country": "Bulgaria"
+  },
+  {
+    "2015": 76.8191,
+    "country": "Bahrain"
+  },
+  {
+    "2015": 75.39683,
+    "country": "Bahamas, The"
+  },
+  {
+    "2015": 76.58859,
+    "country": "Bosnia and Herzegovina"
+  },
+  {
+    "2015": 73.62439,
+    "country": "Belarus"
+  },
+  {
+    "2015": 70.19237,
+    "country": "Belize"
+  },
+  {
+    "2015": 81.0122,
+    "country": "Bermuda"
+  },
+  {
+    "2015": 68.73961,
+    "country": "Bolivia"
+  },
+  {
+    "2015": 74.67588,
+    "country": "Brazil"
+  },
+  {
+    "2015": 75.65844,
+    "country": "Barbados"
+  },
+  {
+    "2015": 79.04083,
+    "country": "Brunei Darussalam"
+  },
+  {
+    "2015": 69.83285,
+    "country": "Bhutan"
+  },
+  {
+    "2015": 64.48741,
+    "country": "Botswana"
+  },
+  {
+    "2015": 51.41912,
+    "country": "Central African Republic"
+  },
+  {
+    "2015": 82.13763,
+    "country": "Canada"
+  },
+  {
+    "2015": 77.02691,
+    "country": "Central Europe and the Baltics"
+  },
+  {
+    "2015": 83.19756,
+    "country": "Switzerland"
+  },
+  {
+    "2015": 80.75168,
+    "country": "Channel Islands"
+  },
+  {
+    "2015": 81.78756,
+    "country": "Chile"
+  },
+  {
+    "2015": 75.98634,
+    "country": "China"
+  },
+  {
+    "2015": 51.91976,
+    "country": "Cote d'Ivoire"
+  },
+  {
+    "2015": 55.93439,
+    "country": "Cameroon"
+  },
+  {
+    "2015": 59.0239,
+    "country": "Congo, Dem. Rep."
+  },
+  {
+    "2015": 62.86766,
+    "country": "Congo, Rep."
+  },
+  {
+    "2015": 74.18202,
+    "country": "Colombia"
+  },
+  {
+    "2015": 63.55402,
+    "country": "Comoros"
+  },
+  {
+    "2015": 73.35563,
+    "country": "Cabo Verde"
+  },
+  {
+    "2015": 79.58646,
+    "country": "Costa Rica"
+  },
+  {
+    "2015": 73.03019,
+    "country": "Caribbean small states"
+  },
+  {
+    "2015": 79.54641,
+    "country": "Cuba"
+  },
+  {
+    "2015": 80.3071,
+    "country": "Cyprus"
+  },
+  {
+    "2015": 79.47317,
+    "country": "Czech Republic"
+  },
+  {
+    "2015": 81.09024,
+    "country": "Germany"
+  },
+  {
+    "2015": 62.28566,
+    "country": "Djibouti"
+  },
+  {
+    "2015": 81.1,
+    "country": "Denmark"
+  },
+  {
+    "2015": 73.67668,
+    "country": "Dominican Republic"
+  },
+  {
+    "2015": 75.04254,
+    "country": "Algeria"
+  },
+  {
+    "2015": 74.17416,
+    "country": "East Asia & Pacific (excluding high income)"
+  },
+  {
+    "2015": 69.32076,
+    "country": "Early-demographic dividend"
+  },
+  {
+    "2015": 75.10597,
+    "country": "East Asia & Pacific"
+  },
+  {
+    "2015": 72.21342,
+    "country": "Europe & Central Asia (excluding high income)"
+  },
+  {
+    "2015": 77.27891,
+    "country": "Europe & Central Asia"
+  },
+  {
+    "2015": 76.10293,
+    "country": "Ecuador"
+  },
+  {
+    "2015": 71.31695,
+    "country": "Egypt, Arab Rep."
+  },
+  {
+    "2015": 82.07028,
+    "country": "Euro area"
+  },
+  {
+    "2015": 64.1009,
+    "country": "Eritrea"
+  },
+  {
+    "2015": 83.38049,
+    "country": "Spain"
+  },
+  {
+    "2015": 77.13171,
+    "country": "Estonia"
+  },
+  {
+    "2015": 64.57805,
+    "country": "Ethiopia"
+  },
+  {
+    "2015": 81.12643,
+    "country": "European Union"
+  },
+  {
+    "2015": 61.44176,
+    "country": "Fragile and conflict affected situations"
+  },
+  {
+    "2015": 81.38537,
+    "country": "Finland"
+  },
+  {
+    "2015": 70.25627,
+    "country": "Fiji"
+  },
+  {
+    "2015": 82.67073,
+    "country": "France"
+  },
+  {
+    "2015": 81.63415,
+    "country": "Faroe Islands"
+  },
+  {
+    "2015": 69.23424,
+    "country": "Micronesia, Fed. Sts."
+  },
+  {
+    "2015": 64.89034,
+    "country": "Gabon"
+  },
+  {
+    "2015": 81.60488,
+    "country": "United Kingdom"
+  },
+  {
+    "2015": 74.81741,
+    "country": "Georgia"
+  },
+  {
+    "2015": 61.49173,
+    "country": "Ghana"
+  },
+  {
+    "2015": 59.19344,
+    "country": "Guinea"
+  },
+  {
+    "2015": 60.46768,
+    "country": "Gambia, The"
+  },
+  {
+    "2015": 55.46732,
+    "country": "Guinea-Bissau"
+  },
+  {
+    "2015": 57.96341,
+    "country": "Equatorial Guinea"
+  },
+  {
+    "2015": 81.5878,
+    "country": "Greece"
+  },
+  {
+    "2015": 73.523,
+    "country": "Grenada"
+  },
+  {
+    "2015": 71.95649,
+    "country": "Guatemala"
+  },
+  {
+    "2015": 79.379,
+    "country": "Guam"
+  },
+  {
+    "2015": 66.50751,
+    "country": "Guyana"
+  },
+  {
+    "2015": 80.77965,
+    "country": "High income"
+  },
+  {
+    "2015": 84.27805,
+    "country": "Hong Kong SAR, China"
+  },
+  {
+    "2015": 73.33312,
+    "country": "Honduras"
+  },
+  {
+    "2015": 61.21518,
+    "country": "Heavily indebted poor countries (HIPC)"
+  },
+  {
+    "2015": 77.27561,
+    "country": "Croatia"
+  },
+  {
+    "2015": 63.07376,
+    "country": "Haiti"
+  },
+  {
+    "2015": 75.96098,
+    "country": "Hungary"
+  },
+  {
+    "2015": 72.35497,
+    "country": "IBRD only"
+  },
+  {
+    "2015": 69.9854,
+    "country": "IDA & IBRD total"
+  },
+  {
+    "2015": 62.82301,
+    "country": "IDA total"
+  },
+  {
+    "2015": 60.66301,
+    "country": "IDA blend"
+  },
+  {
+    "2015": 69.07168,
+    "country": "Indonesia"
+  },
+  {
+    "2015": 63.89123,
+    "country": "IDA only"
+  },
+  {
+    "2015": 68.34856,
+    "country": "India"
+  },
+  {
+    "2015": 81.50244,
+    "country": "Ireland"
+  },
+  {
+    "2015": 75.59134,
+    "country": "Iran, Islamic Rep."
+  },
+  {
+    "2015": 69.59027,
+    "country": "Iraq"
+  },
+  {
+    "2015": 82.86098,
+    "country": "Iceland"
+  },
+  {
+    "2015": 82.05122,
+    "country": "Israel"
+  },
+  {
+    "2015": 83.49024,
+    "country": "Italy"
+  },
+  {
+    "2015": 75.79817,
+    "country": "Jamaica"
+  },
+  {
+    "2015": 74.20334,
+    "country": "Jordan"
+  },
+  {
+    "2015": 83.84366,
+    "country": "Japan"
+  },
+  {
+    "2015": 72,
+    "country": "Kazakhstan"
+  },
+  {
+    "2015": 62.13373,
+    "country": "Kenya"
+  },
+  {
+    "2015": 70.65122,
+    "country": "Kyrgyz Republic"
+  },
+  {
+    "2015": 68.65615,
+    "country": "Cambodia"
+  },
+  {
+    "2015": 66.14785,
+    "country": "Kiribati"
+  },
+  {
+    "2015": 82.15585,
+    "country": "Korea, Rep."
+  },
+  {
+    "2015": 74.6979,
+    "country": "Kuwait"
+  },
+  {
+    "2015": 74.94118,
+    "country": "Latin America & Caribbean (excluding high income)"
+  },
+  {
+    "2015": 66.53988,
+    "country": "Lao PDR"
+  },
+  {
+    "2015": 79.62861,
+    "country": "Lebanon"
+  },
+  {
+    "2015": 61.16095,
+    "country": "Liberia"
+  },
+  {
+    "2015": 71.82632,
+    "country": "Libya"
+  },
+  {
+    "2015": 75.18451,
+    "country": "St. Lucia"
+  },
+  {
+    "2015": 75.16396,
+    "country": "Latin America & Caribbean"
+  },
+  {
+    "2015": 63.52769,
+    "country": "Least developed countries: UN classification"
+  },
+  {
+    "2015": 61.73095,
+    "country": "Low income"
+  },
+  {
+    "2015": 82.07317,
+    "country": "Liechtenstein"
+  },
+  {
+    "2015": 74.9532,
+    "country": "Sri Lanka"
+  },
+  {
+    "2015": 67.41741,
+    "country": "Lower middle income"
+  },
+  {
+    "2015": 69.913,
+    "country": "Low & middle income"
+  },
+  {
+    "2015": 49.96122,
+    "country": "Lesotho"
+  },
+  {
+    "2015": 75.36279,
+    "country": "Late-demographic dividend"
+  },
+  {
+    "2015": 75.11951,
+    "country": "Lithuania"
+  },
+  {
+    "2015": 82.22927,
+    "country": "Luxembourg"
+  },
+  {
+    "2015": 74.12439,
+    "country": "Latvia"
+  },
+  {
+    "2015": 80.76607,
+    "country": "Macao SAR, China"
+  },
+  {
+    "2015": 79.47073,
+    "country": "St. Martin (French part)"
+  },
+  {
+    "2015": 74.28932,
+    "country": "Morocco"
+  },
+  {
+    "2015": 71.62644,
+    "country": "Moldova"
+  },
+  {
+    "2015": 65.48278,
+    "country": "Madagascar"
+  },
+  {
+    "2015": 76.979,
+    "country": "Maldives"
+  },
+  {
+    "2015": 73.05363,
+    "country": "Middle East & North Africa"
+  },
+  {
+    "2015": 76.92068,
+    "country": "Mexico"
+  },
+  {
+    "2015": 70.86823,
+    "country": "Middle income"
+  },
+  {
+    "2015": 75.49534,
+    "country": "Macedonia, FYR"
+  },
+  {
+    "2015": 58.45722,
+    "country": "Mali"
+  },
+  {
+    "2015": 81.94634,
+    "country": "Malta"
+  },
+  {
+    "2015": 66.04207,
+    "country": "Myanmar"
+  },
+  {
+    "2015": 72.48349,
+    "country": "Middle East & North Africa (excluding high income)"
+  },
+  {
+    "2015": 76.33771,
+    "country": "Montenegro"
+  },
+  {
+    "2015": 69.82127,
+    "country": "Mongolia"
+  },
+  {
+    "2015": "",
+    "country": "Northern Mariana Islands"
+  },
+  {
+    "2015": 55.37124,
+    "country": "Mozambique"
+  },
+  {
+    "2015": 63.20283,
+    "country": "Mauritania"
+  },
+  {
+    "2015": 74.35317,
+    "country": "Mauritius"
+  },
+  {
+    "2015": 63.79685,
+    "country": "Malawi"
+  },
+  {
+    "2015": 74.87517,
+    "country": "Malaysia"
+  },
+  {
+    "2015": 79.08309,
+    "country": "North America"
+  },
+  {
+    "2015": 64.91544,
+    "country": "Namibia"
+  },
+  {
+    "2015": 77.77317,
+    "country": "New Caledonia"
+  },
+  {
+    "2015": 61.96902,
+    "country": "Niger"
+  },
+  {
+    "2015": 53.04888,
+    "country": "Nigeria"
+  },
+  {
+    "2015": 75.09812,
+    "country": "Nicaragua"
+  },
+  {
+    "2015": 81.70732,
+    "country": "Netherlands"
+  },
+  {
+    "2015": 82.1,
+    "country": "Norway"
+  },
+  {
+    "2015": 69.97334,
+    "country": "Nepal"
+  },
+  {
+    "2015": 81.45683,
+    "country": "New Zealand"
+  },
+  {
+    "2015": 80.32481,
+    "country": "OECD members"
+  },
+  {
+    "2015": 77.3242,
+    "country": "Oman"
+  },
+  {
+    "2015": 66.61456,
+    "country": "Other small states"
+  },
+  {
+    "2015": 66.37698,
+    "country": "Pakistan"
+  },
+  {
+    "2015": 77.76729,
+    "country": "Panama"
+  },
+  {
+    "2015": 74.78073,
+    "country": "Peru"
+  },
+  {
+    "2015": 68.40676,
+    "country": "Philippines"
+  },
+  {
+    "2015": 62.77668,
+    "country": "Papua New Guinea"
+  },
+  {
+    "2015": 78.20488,
+    "country": "Poland"
+  },
+  {
+    "2015": 58.74867,
+    "country": "Pre-demographic dividend"
+  },
+  {
+    "2015": 79.57232,
+    "country": "Puerto Rico"
+  },
+  {
+    "2015": 70.33793,
+    "country": "Korea, Dem. People�s Rep."
+  },
+  {
+    "2015": 81.52195,
+    "country": "Portugal"
+  },
+  {
+    "2015": 73.02563,
+    "country": "Paraguay"
+  },
+  {
+    "2015": 73.0742,
+    "country": "West Bank and Gaza"
+  },
+  {
+    "2015": 70.10617,
+    "country": "Pacific island small states"
+  },
+  {
+    "2015": 80.64506,
+    "country": "Post-demographic dividend"
+  },
+  {
+    "2015": 76.75241,
+    "country": "French Polynesia"
+  },
+  {
+    "2015": 78.76259,
+    "country": "Qatar"
+  },
+  {
+    "2015": 74.96098,
+    "country": "Romania"
+  },
+  {
+    "2015": 70.90854,
+    "country": "Russian Federation"
+  },
+  {
+    "2015": 64.52454,
+    "country": "Rwanda"
+  },
+  {
+    "2015": 68.43324,
+    "country": "South Asia"
+  },
+  {
+    "2015": 74.49334,
+    "country": "Saudi Arabia"
+  },
+  {
+    "2015": 63.71073,
+    "country": "Sudan"
+  },
+  {
+    "2015": 66.80441,
+    "country": "Senegal"
+  },
+  {
+    "2015": 82.59512,
+    "country": "Singapore"
+  },
+  {
+    "2015": 68.14624,
+    "country": "Solomon Islands"
+  },
+  {
+    "2015": 51.30817,
+    "country": "Sierra Leone"
+  },
+  {
+    "2015": 73.0011,
+    "country": "El Salvador"
+  },
+  {
+    "2015": 55.68559,
+    "country": "Somalia"
+  },
+  {
+    "2015": 75.4878,
+    "country": "Serbia"
+  },
+  {
+    "2015": 58.9733,
+    "country": "Sub-Saharan Africa (excluding high income)"
+  },
+  {
+    "2015": 56.11151,
+    "country": "South Sudan"
+  },
+  {
+    "2015": 58.97462,
+    "country": "Sub-Saharan Africa"
+  },
+  {
+    "2015": 67.99258,
+    "country": "Small states"
+  },
+  {
+    "2015": 66.51371,
+    "country": "Sao Tome and Principe"
+  },
+  {
+    "2015": 71.29417,
+    "country": "Suriname"
+  },
+  {
+    "2015": 77.2122,
+    "country": "Slovak Republic"
+  },
+  {
+    "2015": 81.07805,
+    "country": "Slovenia"
+  },
+  {
+    "2015": 82.55122,
+    "country": "Sweden"
+  },
+  {
+    "2015": 48.87395,
+    "country": "Swaziland"
+  },
+  {
+    "2015": 73.22927,
+    "country": "Seychelles"
+  },
+  {
+    "2015": 70.08932,
+    "country": "Syrian Arab Republic"
+  },
+  {
+    "2015": "",
+    "country": "Turks and Caicos Islands"
+  },
+  {
+    "2015": 51.87332,
+    "country": "Chad"
+  },
+  {
+    "2015": 74.22231,
+    "country": "East Asia & Pacific (IDA & IBRD countries)"
+  },
+  {
+    "2015": 72.71588,
+    "country": "Europe & Central Asia (IDA & IBRD countries)"
+  },
+  {
+    "2015": 60.12076,
+    "country": "Togo"
+  },
+  {
+    "2015": 74.6012,
+    "country": "Thailand"
+  },
+  {
+    "2015": 69.76844,
+    "country": "Tajikistan"
+  },
+  {
+    "2015": 65.73644,
+    "country": "Turkmenistan"
+  },
+  {
+    "2015": 75.05589,
+    "country": "Latin America & the Caribbean (IDA & IBRD countries)"
+  },
+  {
+    "2015": 68.52641,
+    "country": "Timor-Leste"
+  },
+  {
+    "2015": 72.4763,
+    "country": "Middle East & North Africa (IDA & IBRD countries)"
+  },
+  {
+    "2015": 72.94405,
+    "country": "Tonga"
+  },
+  {
+    "2015": 68.43324,
+    "country": "South Asia (IDA & IBRD)"
+  },
+  {
+    "2015": 58.97462,
+    "country": "Sub-Saharan Africa (IDA & IBRD countries)"
+  },
+  {
+    "2015": 70.55771,
+    "country": "Trinidad and Tobago"
+  },
+  {
+    "2015": 74.97598,
+    "country": "Tunisia"
+  },
+  {
+    "2015": 75.42622,
+    "country": "Turkey"
+  },
+  {
+    "2015": 65.48749,
+    "country": "Tanzania"
+  },
+  {
+    "2015": 59.17907,
+    "country": "Uganda"
+  },
+  {
+    "2015": 71.18951,
+    "country": "Ukraine"
+  },
+  {
+    "2015": 74.87143,
+    "country": "Upper middle income"
+  },
+  {
+    "2015": 77.13822,
+    "country": "Uruguay"
+  },
+  {
+    "2015": 78.74146,
+    "country": "United States"
+  },
+  {
+    "2015": 68.45307,
+    "country": "Uzbekistan"
+  },
+  {
+    "2015": 73.05237,
+    "country": "St. Vincent and the Grenadines"
+  },
+  {
+    "2015": 74.40961,
+    "country": "Venezuela, RB"
+  },
+  {
+    "2015": 79.87317,
+    "country": "Virgin Islands (U.S.)"
+  },
+  {
+    "2015": 75.77773,
+    "country": "Vietnam"
+  },
+  {
+    "2015": 72.15737,
+    "country": "Vanuatu"
+  },
+  {
+    "2015": 71.66396,
+    "country": "World"
+  },
+  {
+    "2015": 73.76488,
+    "country": "Samoa"
+  },
+  {
+    "2015": 71.34634,
+    "country": "Kosovo"
+  },
+  {
+    "2015": 64.03139,
+    "country": "Yemen, Rep."
+  },
+  {
+    "2015": 57.4409,
+    "country": "South Africa"
+  },
+  {
+    "2015": 60.78568,
+    "country": "Zambia"
+  },
+  {
+    "2015": 59.16107,
+    "country": "Zimbabwe"
+  }
+]

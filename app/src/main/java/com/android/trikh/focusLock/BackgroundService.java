@@ -1,5 +1,6 @@
 package com.android.trikh.focusLock;
 
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -22,15 +23,28 @@ import static java.lang.Integer.valueOf;
  */
 
 public class BackgroundService extends Service {
+    public static boolean isServiceRunningInForeground(Context context, Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                if (service.foreground) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         Notification notification = new Notification.Builder(this)
-                .setContentTitle("Trial Title")
-                .setContentText("Trial message")
-                .setSmallIcon(R.drawable.alarm_clock)
-                .setTicker("Trial ticker text")
+                .setSmallIcon(R.drawable.focus_block_2)
+                .setContentTitle("Focus Lock")
+                .setPriority(Notification.PRIORITY_MIN)
+                .setContentText("Ensuring additional security measures and failure prevention")
                 .build();
 
         startForeground(1337, notification);
@@ -47,13 +61,14 @@ public class BackgroundService extends Service {
                         new Intent(BackgroundService.this, AlarmService.class),
                         PendingIntent.FLAG_NO_CREATE) != null);
 
-                if (alarmUp) {
-                    Log.d("myTag", "Alarm is already active");
-                } else {
+                if (!alarmUp) {
                     setAlarmsNow(BackgroundService.this);
-                    Log.d("myTag", "Alarm is not active");
                 }
-                sendBroadcast(new Intent("RestartAppPlease"));
+                if (isServiceRunningInForeground(BackgroundService.this, AlarmService.class)) {
+                    stopService();
+                } else {
+                    sendBroadcast(new Intent("RestartAppPlease"));
+                }
             }
         }, 90000);
         return START_STICKY;
@@ -66,9 +81,9 @@ public class BackgroundService extends Service {
         ah.setAlarm(PreferenceHelper.getSleepTimeString(context), valueOf(context.getString(R.string.request_code_for_night)));
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    private void stopService() {
+        stopForeground(true);
+        stopSelf();
     }
 
     @Nullable
