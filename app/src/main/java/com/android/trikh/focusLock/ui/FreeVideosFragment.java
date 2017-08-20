@@ -27,15 +27,11 @@ import butterknife.ButterKnife;
 import static android.app.Activity.RESULT_OK;
 import static com.android.trikh.focusLock.PreferenceHelper.getFirstDay;
 
-/**
- * Created by trikh on 04-08-2017.
- */
-
 public class FreeVideosFragment extends Fragment {
 
+    public static final String[] VIDEO_ID = {"g-jwWYX7Jlo", "Cz3q1R0oHmE", "UNQhuFL6CWg", "9z4Kft47kBM", "z1PSbDmV8Gw", "YDSwwEeF_K8", "26U_seo0a1g", "VFeXCKrAD-U", "CPQ1budJRIQ", "xp2qjshr-r4", "HeGPn5zxegY", "bYMUb4uQZoo", "lG_rrVwSqEs"};
     private static final int REQ_START_STANDALONE_PLAYER = 1;
     private static final int REQ_RESOLVE_SERVICE_MISSING = 2;
-    final String[] VIDEO_ID = {"26U_seo0a1g", "VFeXCKrAD-U", "CPQ1budJRIQ", "xp2qjshr-r4", "HeGPn5zxegY", "bYMUb4uQZoo", "lG_rrVwSqEs"};
     @BindView(R.id.content_title)
     TextView title;
     @BindView(R.id.thumbnail)
@@ -56,7 +52,7 @@ public class FreeVideosFragment extends Fragment {
 
         int dayToday = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
         int videoNumber = dayToday - getFirstDay(getContext());
-        if (videoNumber <= 6) {
+        if (videoNumber <= VIDEO_ID.length) {
             final String video_id = VIDEO_ID[videoNumber];
 
             Picasso.with(getContext()).load("http://img.youtube.com/vi/" + video_id + "/hqdefault.jpg").into(thumbnail);
@@ -78,7 +74,7 @@ public class FreeVideosFragment extends Fragment {
                     }
                 }
             });
-            Toast.makeText(getContext(), "Daily content left for free Version: " + String.valueOf(7 - videoNumber), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Daily content left for free Version: " + String.valueOf(VIDEO_ID.length - videoNumber), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getContext(), "Daily content left for free Version: 0", Toast.LENGTH_SHORT).show();
             playButton.setVisibility(View.GONE);

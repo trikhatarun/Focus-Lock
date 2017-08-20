@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#010E27</color>
-    <color name="colorPrimaryDark">#010E27</color>
+    <color name="colorPrimary">#2fbfd4</color>
+    <color name="colorPrimaryDark">#007EA7</color>
     <color name="colorAccent">#3CDEF6</color>
     <color name="grey">#ABABAB</color>
     <color name="red">#ff0000</color>
+    <color name="sleep_clock_accent">#FFDC56</color>
+
+    <!-- Fragment colors dark -->
+    <color name="frag1_dark">#2b2d41</color>
+    <color name="frag2_dark">#cf5c41</color>
+    <color name="frag3_dark">#4e0f29</color>
+    <color name="frag4_dark">#2B2C28</color>
+
+
+    <!--Fragment colors light -->
+    <color name="frag1_light">#4B4E6D</color>
+    <color name="frag2_light">#F38D68</color>
+    <color name="frag3_light">#961D4E</color>
+    <color name="frag4_light">#339989</color>
+
 </resources>

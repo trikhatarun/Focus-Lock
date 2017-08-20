@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.android.trikh.focusLock.data.AppInfo;
 import com.android.trikh.focusLock.recyclerView.AppListAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -56,12 +58,21 @@ public class ApplicationListFragment extends Fragment implements AppListAdapter.
 
         blockAppsSet = preferences.getStringSet(getString(R.string.block_app_set_key), new HashSet<String>());
 
+        if (blockAppsSet.isEmpty()) {
+            PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putStringSet(getString(R.string.block_app_set_key), new HashSet<>((Arrays.asList("com.whatsapp", "com.facebook.katana", "com.instagram.android", "com.facebook.orca", "com.google.android.youtube", "com.snapchat.android")))).commit();
+            blockAppsSet = preferences.getStringSet(getString(R.string.block_app_set_key), new HashSet<String>());
+        }
+
         appInfoList = new ArrayList<>();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                linearLayoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         adapter = new AppListAdapter(getContext(), this);
 
@@ -118,7 +129,6 @@ public class ApplicationListFragment extends Fragment implements AppListAdapter.
                 }
                 //it's a system app, not interested
                 else if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                    continue;
                 }
                 //in this case, it should be a user-installed app
                 else {

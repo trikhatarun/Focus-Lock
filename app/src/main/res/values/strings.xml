@@ -22,11 +22,20 @@
     <string name="day_installed_key">day_installed</string>
     <string name="life_days_left_key">days_left</string>
     <string name="days_left">days left</string>
-    <string name="disclaimer">*based on average life expectancy of %s</string>
+    <string name="disclaimer">(based on average life expectancy of %s)</string>
     <string name="country_key">country</string>
-    <string name="facebook_app_id">483876031968278</string>
-    <string name="fb_login_protocol_scheme">fb483876031968278</string>
     <string name="target_hit_icon">Target hit icon</string>
     <string name="thumbnail_for_the_video">thumbnail for the video</string>
     <string name="play_button_icon">play button icon</string>
+    <string name="title_1">Set Wake Up &amp; Sleep time</string>
+    <string name="description_1">Set the wake up and sleep time so that the app can turn off distractions appropriately \n(for 3 hours after you wake up &amp; 1 hour before you sleep)</string>
+    <string name="title_2">Block the distractions</string>
+    <string name="description_2">Block the applications that distract you in application section</string>
+    <string name="title_3">Daily motivational content</string>
+    <string name="description_3">Watch daily motivational content to boost you up for the day in the app itself so you don\'t get distracted and are ready to execute.</string>
+    <string name="dob_title">Enter you Date of Birth</string>
+    <string name="date_format_hint">dd/mm/yyyy</string>
+    <string name="day_today_key">day_today</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

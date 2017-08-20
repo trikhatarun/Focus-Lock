@@ -1,8 +1,10 @@
 package com.android.trikh.focusLock.ui;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +21,6 @@ import java.text.DecimalFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Created by trikh on 21-06-2017.
- */
 
 public class HomeFragment extends Fragment {
     @BindView(R.id.wake_up_time)
@@ -45,6 +43,24 @@ public class HomeFragment extends Fragment {
     private Context contextInstance;
 
     private String wakeUpTimeString, sleepTimeString;
+
+    @Override
+    public void onResume() {
+        updateUI();
+        super.onResume();
+    }
+
+    private void updateUI() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(contextInstance);
+        int daysLeftCount = sharedPreferences.getInt(contextInstance.getString(R.string.life_days_left_key), 0);
+        if (daysLeftCount != 0) {
+            daysLeft.setText(String.valueOf(daysLeftCount));
+            disclaimer.setText(contextInstance.getString(R.string.disclaimer, PreferenceHelper.getCountryName(contextInstance)));
+            daysLeftString.setVisibility(View.VISIBLE);
+            daysLeft.setVisibility(View.VISIBLE);
+            disclaimer.setVisibility(View.VISIBLE);
+        }
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -70,6 +86,7 @@ public class HomeFragment extends Fragment {
 
         wakeUpTime.setTypeface(typeface);
         sleepTime.setTypeface(typeface);
+        daysLeft.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Rajdhani-Bold.ttf"));
 
         loadPreferences();
 
@@ -150,6 +167,9 @@ public class HomeFragment extends Fragment {
             }
         }, hour, minute, true);
         timePickerDialog.setTitle("Sleeping Time");
+        timePickerDialog.setAccentColor(getResources().getColor(R.color.sleep_clock_accent));
         timePickerDialog.show(getActivity().getFragmentManager(), "NOTAG");
     }
 }
+
+

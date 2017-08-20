@@ -19,32 +19,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.android.trikh.focusLock.MainActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.android.trikh.focusLock.ui.BlockedAppActivity"
+            android:name=".ui.BlockedAppActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".MainIntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Intro" />
 
-        <receiver android:name="com.android.trikh.focusLock.alarmPackage.RebootedDevice">
+        <receiver android:name=".alarmPackage.RebootedDevice">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
                 <action android:name="android.intent.action.REBOOT" />
+
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
+
         <service
-            android:name="com.android.trikh.focusLock.alarmPackage.AlarmService"
+            android:name=".alarmPackage.AlarmService"
             android:enabled="true" />
         <service
             android:name=".BackgroundService"
@@ -54,6 +53,26 @@
             <intent-filter>
                 <action android:name="RestartAppPlease" />
             </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".DaysLeftWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/days_left_info" />
         </receiver>
     </application>
 

@@ -12,27 +12,28 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.TelephonyManager;
+import android.widget.Toast;
 
-import com.android.trikh.focusLock.data.JsonHelper;
 import com.android.trikh.focusLock.ui.ApplicationListFragment;
 import com.android.trikh.focusLock.ui.FreeVideosFragment;
 import com.android.trikh.focusLock.ui.HomeFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.NativeExpressAdView;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
     @BindView(R.id.bottomBar)
     BottomBar bottomBar;
     private int oldTabId = -1;
@@ -40,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if (settings.getBoolean("first_time", true)) {
+            startActivity(new Intent(this, MainIntroActivity.class));
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("first_time", false);
+            editor.commit();
+        }
+
         setContentView(R.layout.main_container);
 
         ButterKnife.bind(this);
@@ -64,17 +76,25 @@ public class MainActivity extends AppCompatActivity {
 
         startService(new Intent(this, BackgroundService.class));
 
-        /*MobileAds.initialize(this, getString(R.string.app_id_admob));
+        MobileAds.initialize(this, getString(R.string.app_id_admob));
 
         NativeExpressAdView adView = (NativeExpressAdView)findViewById(R.id.adView);
 
         AdRequest request = new AdRequest.Builder().build();
-        adView.loadAd(request);*/
+        adView.loadAd(request);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.getBooleanExtra("fromService", false)) {
+                bottomBar.selectTabAtPosition(2, true);
+            }
+        }
 
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
                 Fragment fragment;
                 if (tabId == R.id.home) {
                     fragment = new HomeFragment();
@@ -85,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     fragment = new FreeVideosFragment();
                     setTitle(getString(R.string.item2_title));
-                }
-                if (oldTabId != -1) {
-                    ft.addToBackStack(null);
                 }
                 if (oldTabId < tabId) {
                     ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
@@ -101,38 +118,17 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
             }
         });
+    }
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-
-        if (settings.getBoolean("my_first_time", true)) {
-            TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-            String country = tm.getSimCountryIso().toLowerCase();
-            JSONArray data = null;
-            try {
-                data = new JSONArray(new JsonHelper(this).loadJSONFromAsset());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (data != null) {
-                for (int i = 0; i < data.length(); i++) {
-                    try {
-                        JSONObject jsonobject = data.getJSONObject(i);
-                        String countryJson = jsonobject.getString("country");
-                        if (countryJson.toLowerCase().equals(country)) {
-                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-                            //Todo[1]: subtract age of person
-                            editor.putInt(getString(R.string.life_days_left_key), Integer.valueOf(jsonobject.getString("2015")) * 365);
-                            editor.putString(getString(R.string.country_key), countryJson);
-                            editor.apply();
-                            break;
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            settings.edit().putBoolean("my_first_time", false).commit();
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + TIME_DELAY > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(getBaseContext(), "Press once again to exit!",
+                    Toast.LENGTH_SHORT).show();
         }
+        back_pressed = System.currentTimeMillis();
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)

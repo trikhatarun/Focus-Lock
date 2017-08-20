@@ -8,10 +8,6 @@ import com.android.trikh.focusLock.alarmPackage.AlarmHelper;
 
 import java.util.Calendar;
 
-/**
- * Created by trikh on 09-07-2017.
- */
-
 public class PreferenceHelper {
 
     public static String getMorningTimeString(Context context) {
@@ -74,7 +70,25 @@ public class PreferenceHelper {
         return PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.country_key), null);
     }
 
-    public static void reduceDaysLeft(Context context) {
+    static int getDayToday(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        int dayToday = preferences.getInt(context.getString(R.string.day_today_key), 0);
+        if (dayToday == 0) {
+            updateDayToday(context);
+            dayToday = preferences.getInt(context.getString(R.string.day_today_key), 0);
+        }
+        return dayToday;
+    }
+
+    static void updateDayToday(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Calendar calendar = Calendar.getInstance();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(context.getString(R.string.day_today_key), calendar.get(Calendar.DAY_OF_YEAR));
+        editor.commit();
+    }
+
+    static void reduceDaysLeft(Context context) {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(context.getString(R.string.life_days_left_key), getDaysLeft(context) - 1).apply();
     }
 }
